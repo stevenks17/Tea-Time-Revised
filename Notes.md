@@ -18,7 +18,7 @@ Tea
 ----
 Belongs_to brand
 Belongs_to User
-Quality of Leaves
+Flavor
 Description
 Has_many Reviews
 Has_many users, through reviews

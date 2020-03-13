@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_12_181308) do
+ActiveRecord::Schema.define(version: 2020_03_13_170606) do
 
   create_table "brands", force: :cascade do |t|
     t.string "name"
@@ -20,17 +20,26 @@ ActiveRecord::Schema.define(version: 2020_03_12_181308) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
     t.string "title"
-    t.text "content"
+    t.string "content"
+    t.integer "user_id", null: false
+    t.integer "tea_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["tea_id"], name: "index_reviews_on_tea_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "teas", force: :cascade do |t|
     t.string "flavor"
     t.text "description"
+    t.integer "brand_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id"], name: "index_teas_on_brand_id"
+    t.index ["user_id"], name: "index_teas_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,4 +54,8 @@ ActiveRecord::Schema.define(version: 2020_03_12_181308) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "reviews", "teas"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "teas", "brands"
+  add_foreign_key "teas", "users"
 end

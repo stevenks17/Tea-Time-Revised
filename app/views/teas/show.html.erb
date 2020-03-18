@@ -1,0 +1,15 @@
+<h1> <%= @tea.flavor%> </h1>
+
+
+<h2><%= @tea.brand_name %> </h2>
+<div>
+    <p><%= @tea.description%></p>
+</div>
+
+<h3> Added by: <%= link_to @tea.user, user_path(@user)%> </h3>
+
+<%= link_to "Edit #{@tea.flavor}", edit_tea_path(@tea) if @tea.user == current_user%>
+
+<br></br>
+
+<%= link to "See All Reviews", tea_reviews_path(@tea) %>

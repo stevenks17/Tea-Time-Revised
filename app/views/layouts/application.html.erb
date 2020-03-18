@@ -9,6 +9,17 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
+
+<ul class="hmenu">
+  <%= render 'devise/menu/registration_items' %>
+  <%= render 'devise/menu/login_items' %>
+</ul>
+<%= yield %>
+
+  <div>
+    <%= link_to "Add a new tea! ", new_tea_path %>
+  </div>
   <body>
     <%= yield %>
   </body>

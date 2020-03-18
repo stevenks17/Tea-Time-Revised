@@ -1,0 +1,12 @@
+<h1> All Tea Blends </h1>
+
+
+<% @teas.each do |t| %>
+
+<h2><%= link_to t.flavor, tea_path(t.id)%> - <%= t.brand.name %> </h2>
+<% link_to "Write a review", new_tea_review_path%>
+<% end %>
+
+<div>
+    <p><%= t.description %></p>
+</div>

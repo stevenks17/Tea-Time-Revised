@@ -1,4 +1,9 @@
 class TeasController < ApplicationController
+    before_action :set_tea, only:[:show, :edit, :update]
+    
+
+
+
     def new
         @tea = Tea.new
         @tea.build_brand

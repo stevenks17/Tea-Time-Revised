@@ -1,8 +1,10 @@
 <% if @tea %>
     <h1> Reviews for <%= @tea.flavor%> - <%= @tea.brand_name%></h1>
+      <%= link_to "Add a Review", new_tea_review_path%> 
 <% else %>
     <h1> All the Reviews </h1>
 <% end %>
+
 
 
 <ul>
@@ -10,8 +12,10 @@
 
 
   <li>
-    <%= @review.tea.flavor%> : <%= link_to @review.title, review_path(review)%> - <%= @review.rating%>
+    <%= review.tea.flavor%> : <%= link_to review.title, review_path(review)%> - <%= review.rating%>
   </li>  <br>
 
+
 <% end %>
+
 </ul>   

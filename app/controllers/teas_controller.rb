@@ -1,5 +1,5 @@
 class TeasController < ApplicationController
-    before_action :set_tea, only:[:show, :edit, :update]
+    before_action :set_tea, only:[:show, :edit, :update, :destroy]
     
 
 
@@ -11,14 +11,13 @@ class TeasController < ApplicationController
 
 
     def create
-      @tea = Tea.new(tea_params)
-      @tea.user_id = session[:user_id]  
+      @tea = current_user.teas.build(tea_params)
       
       
-      if @tea.save
-          redirect_to tea_path(@tea)
+      if @tea.valid?
+        @tea.save
+          redirect_to new_tea_path(@tea)
         else
-          @tea.build_brand
           render :new
         end  
     end
@@ -32,16 +31,21 @@ class TeasController < ApplicationController
     end
 
     def edit
+
     end
 
     def update
-        if @tea.update(tea_params)
-            redirect_to tea_path(@tea)
-        else
-            render :edit
-        end
+        
+        @tea.update(tea_params)
+        redirect_to user_teas_path(current_user.id)
     end
 
+    def destroy
+        
+        @tea.destroy(tea_params)
+        flash[:notice] = "Tea Blend Deleted!"
+        redirect_to user_teas_path(current_user.id)
+    end
 
 
     private 
@@ -51,8 +55,12 @@ class TeasController < ApplicationController
     end
 
     def set_tea
-        @tea = Tea.find_by(params[:id])
+        @tea = Tea.find_by_id(params[:id])
         redirect_to tea_path if !@tea
+    end
+
+    def set_user
+        @user.User.find_by_id(params[:user_id])
     end
 
     

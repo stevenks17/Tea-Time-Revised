@@ -15,12 +15,16 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <h2>Welcome! <%= user_signed_in? ? current_user.email : "Guest" %></h2>
+     <%= link_to "Add a Tea Blend", new_tea_path%> |
+     <%= link_to " All Tea Blends", teas_path%> |
+     <%= link_to " Add a Review", new_review_path%> | 
+     <%= link_to " All Reviews", reviews_path%> |
 
 
     <div class="nav">
     
-      <%= link_to "Log In", new_user_session_path %>
-      <%= link_to "Sign Up", new_user_registration_path  %>
+      <%= link_to "Log In", new_user_session_path %> |
+      <%= link_to "Sign Up", new_user_registration_path  %> |
       <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
     </div>
     <%= yield %>

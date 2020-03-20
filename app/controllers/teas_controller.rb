@@ -25,7 +25,7 @@ class TeasController < ApplicationController
 
 
     def index
-        @tea = Tea.order_by_rating.includes(:brand)
+        @teas = Tea.order_by_rating.includes(:brand)
     end
 
     def show

@@ -1,0 +1,34 @@
+<h1>Write a Review </h1>
+
+
+
+
+<%= form_for Review.new do |f|%>
+    <% if params[:tea_id] %>
+     <%= f.hidden_field :tea_id %>
+    <% else %>
+      <div>
+        <%= f.label :tea_id, "Select a Tea Blend" %>
+        <%= f.collection_select :tea_id, Tea.alpha, :id, :flavor_and_brand, include_blank: true %>
+      </div>
+    <% end %>
+    <div>
+        <%= f.label :rating %>
+        <%= f.number_field :rating, min:0, max:10 %>
+    </div>
+    <br>
+    <div>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </div> 
+    <br>
+    <div>
+        <%= f.label :content %>
+        <%= f.text_area :content, size: "25x10" %>
+    </div> 
+    <br>
+
+
+
+    <%= f.submit %>
+<% end %>                  

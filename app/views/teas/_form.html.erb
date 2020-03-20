@@ -1,5 +1,4 @@
-<%= render partial: 'errors', locals: {object: @tea}  %>
-<% form_for(@tea) do |f|%>
+<%= form_for(@tea) do |f|%>
   <div>
     <%= f.label :flavor %>
     <%= f.text_field :flavor %>

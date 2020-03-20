@@ -6,10 +6,10 @@
     <p><%= @tea.description%></p>
 </div>
 
-<h3> Added by: <%= link_to @tea.user, user_path(@user)%> </h3>
+<h3> Added by: <%= @tea.user.email %> </h3>
 
 <%= link_to "Edit #{@tea.flavor}", edit_tea_path(@tea) if @tea.user == current_user%>
 
 <br></br>
 
-<%= link to "See All Reviews", tea_reviews_path(@tea) %>
+<%= link_to "See All Reviews", tea_reviews_path(@tea) %>

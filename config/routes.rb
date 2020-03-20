@@ -1,11 +1,20 @@
 Rails.application.routes.draw do
-  
+
+  root :to => 'teas#welcome'
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", registrations: 'registrations' }
+
+    #devise_scope :user do
+      #authenticated :user do 
+       #root :to => 'devise/sessions#welcome'
+      #end
+      #unauthenticated :user do
+        #root :to => 'devise/registrations#new', as: unauthenticated_root
+      #end
+    #end
 
     devise_scope :user do
       get 'login', to: 'devise/sessions#new'
-    end
-    devise_scope :user do
       get 'signup', to: 'devise/registrations#new'
     end
   

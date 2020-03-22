@@ -8,7 +8,7 @@ class Review < ApplicationRecord
 
   validates :tea, uniqueness: {scope: :user, message: "has already been reviewed by you" }
  
-  scope :order_by_rating, ->{left_joins(:reviews).group(:id).order('avg(rating) desc')}
+  scope :order_by_rating, ->{group(:id).order('avg(reviews.rating) desc')}
 
 
 end

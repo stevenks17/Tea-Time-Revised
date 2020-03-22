@@ -1,14 +1,13 @@
-<h1> <%= @tea.flavor%> </h1>
+<h2>Flavor: <%= @tea.flavor%> </h2>
 
 
-<h2><%= @tea.brand_name %> </h2>
+<h3>Brand: <%= @tea.brand_name %> </h3>
 <div>
-    <p><%= @tea.description%></p>
+    <p> Description: <%= @tea.description%></p>
 </div>
+<br>
+<h5> Added by: <%= @tea.user.email %> </h5>
 
-<h3> Added by: <%= @tea.user.email %> </h3>
-
-<%= link_to "Edit #{@tea.flavor}", edit_tea_path(@tea) if @tea.user == current_user%>
 
 <br></br>
 

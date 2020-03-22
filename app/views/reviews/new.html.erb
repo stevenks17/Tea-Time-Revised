@@ -1,11 +1,11 @@
-<h1>Write a Review </h1>
 
+<h1>Write a Review for  </h1>
 
 
 
 <%= form_for Review.new do |f|%>
     <% if params[:tea_id] %>
-     <%= f.hidden_field :tea_id %>
+     <%= f.hidden_field :tea_id,value: params[:tea_id] %>
     <% else %>
       <div>
         <%= f.label :tea_id, "Select a Tea Blend" %>

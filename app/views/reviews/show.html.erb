@@ -1,3 +1,13 @@
-<h1> <%= @review.title %> - <%= @review.rating%> </h1>
+<h1> <%= @review.title %> - <%= @review.rating%> out of 10 </h1>
 
 <p><%= @review.content %></p>
+
+
+
+
+<h3> Written by: <%= @review.tea.user.email %></h3>
+
+<%= link_to "Edit Review", edit_review_path(@review) if @review.tea.user == current_user%>
+<br>
+</li><%= link_to "Delete Review", review_path(@review), method: :delete if @review.tea.user == current_user%>
+

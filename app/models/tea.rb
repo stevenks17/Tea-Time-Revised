@@ -21,7 +21,7 @@ class Tea < ApplicationRecord
   def not_a_duplicate
     tea = Tea.find_by(flavor: flavor, brand_id: brand_id)
     if !!tea && tea != self
-      errors.add(:flavor, 'has alredy been added for that brand')
+      errors.add(:flavor, 'has already been added for that brand')
     end
   end
 

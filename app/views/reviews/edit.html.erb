@@ -1,0 +1,29 @@
+<%= form_for  (@review) do |f|%>
+    <% if params[:tea_id] %>
+     <%= f.hidden_field :tea_id,value: params[:tea_id] %>
+    <% else %>
+      <div>
+        <%= "Flavor: #{@review.tea.flavor} "%>
+      </div>
+    <% end %>
+
+    <div>
+        <%= f.label :title, "Title: " %>
+        <%= f.text_field :title %>
+    </div> 
+    <div>
+        <%= f.label :rating, "Rating: " %>
+        <%= f.number_field :rating, min:0, max:10 %>
+    </div>
+    <br>
+    <div>
+        <%= f.label :content, "Content: "  %>
+        <br>
+        <%= f.text_area :content, size: "60x25" %>
+    </div> 
+    <br>
+
+
+
+    <%= f.submit %>
+<% end %>     

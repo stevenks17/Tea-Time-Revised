@@ -19,10 +19,11 @@ Rails.application.routes.draw do
     end
   
   
-  resources :reviews
+  resources :reviews 
   resources :teas do
     resources :reviews, only: [:new, :index]
   end
+  resources :review
   resources :users, only: [:show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

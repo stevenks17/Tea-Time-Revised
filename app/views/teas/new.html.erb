@@ -2,11 +2,11 @@
 
 <%= form_for(@tea) do |f|%>
   <div>
-     <%= f.label :flavor %>
+     <%= f.label :flavor, "Flavor: " %>
      <%= f.text_field :flavor %>
  </div>
  <div>
-   <%= f.label :description %>
+   <%= f.label :description, "Description: " %>
    <%= f.text_field :description %>
  </div>
 
@@ -19,7 +19,7 @@
 <p> Or create a new Brand: <p>
 <div> 
 <%=f.fields_for :brand do |b| %> 
-  <%=b.label :name %>
+  <%=b.label :name, "Name: " %>
   <%= b.text_field :name%>
 <% end %>
 </div>

@@ -1,5 +1,5 @@
 class TeasController < ApplicationController
-    before_action :set_tea, only:[:show, :edit, :update, :destroy]
+    before_action :set_tea, only:[:show, :edit, :update]
     
 
 
@@ -40,12 +40,7 @@ class TeasController < ApplicationController
         redirect_to user_teas_path(current_user.id)
     end
 
-    def destroy
-        
-        @tea.destroy(tea_params)
-        flash[:notice] = "Tea Blend Deleted!"
-        redirect_to user_teas_path(current_user.id)
-    end
+
 
 
     private 

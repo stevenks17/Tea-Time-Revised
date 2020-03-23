@@ -12,11 +12,10 @@ class TeasController < ApplicationController
 
     def create
       @tea = current_user.teas.build(tea_params)
-      
-      
+          
       if @tea.valid?
         @tea.save
-          redirect_to new_tea_path(@tea)
+          redirect_to teas_path(@tea)
         else
           render :new
         end  

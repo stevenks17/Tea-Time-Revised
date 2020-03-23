@@ -5,7 +5,7 @@
 
 
 
-<h3> Written by: <%= @review.tea.user.email %></h3>
+<h3> Written by: <%= @review.user.email %></h3>
 
 <%= link_to "Edit Review", edit_review_path(@review) if @review.tea.user == current_user%>
 <br>

@@ -2,6 +2,23 @@
 <html>
   <head>
     <title>TeaTimeRevised</title>
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/materialize.min.js"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,25 +26,25 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+ <div class="container">
 
-
-  <body>
+   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <h2>Welcome! <%= user_signed_in? ? current_user.email : "Guest" %></h2>
-  <% if user_signed_in? %>
+   <% if user_signed_in? %>
      <%= link_to "Add a Tea Blend", new_tea_path%> |
      <%= link_to " All Tea Blends", teas_path%> |
      <%= link_to " Add a Review", new_review_path%> | 
      <%= link_to " All Reviews", reviews_path%> |
      <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-  <% else %>
+    <% else %>
      <div class="nav">
       <%= link_to "Log In", new_user_session_path %> |
       <%= link_to "Sign Up", new_user_registration_path  %> |
       <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-    </div>
-
+     </div>
+  </div>
   <% end %>  
     <%= yield %>
     </body>

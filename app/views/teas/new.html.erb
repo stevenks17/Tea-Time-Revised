@@ -1,23 +1,23 @@
 <h1> Create a new tea blend!</h1>
 
 <%= form_for(@tea) do |f|%>
-  <div>
+  <div class= "input-field">
      <%= f.label :flavor, "Flavor: " %>
      <%= f.text_field :flavor %>
  </div>
- <div>
+ <div class= "input-field">
    <%= f.label :description, "Description: " %>
    <%= f.text_field :description %>
  </div>
 
  <p> Select a Brand that already exists: </p>
- <div>
+ <div class="input-field col s12">
    <%= f.collection_select :brand_id, Brand.all, :id, :name %>
 
  </div>
 
 <p> Or create a new Brand: <p>
-<div> 
+<div class= "input-field">
 <%=f.fields_for :brand do |b| %> 
   <%=b.label :name, "Name: " %>
   <%= b.text_field :name%>

@@ -3,11 +3,15 @@
 
 <% @teas.each do |tea| %>
 
-<h2><%= link_to tea.flavor, tea_path(tea.id)%> - <%= tea.brand.name %> </h2>
+<h2><%= tea.brand.name %> - <%= link_to tea.flavor, tea_path(tea.id)%>  </h2>
 <% link_to "Write a review", new_tea_review_path(tea.id)%>
 
 <div>
-    <p><%= tea.description %></p>
+    <p>Desription: <%= tea.description %>
+    <br>
+       Added By: <%= tea.user.email%>   
+    </p>
+
 </div>
 
 <% end %>

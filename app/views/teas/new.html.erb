@@ -1,6 +1,23 @@
 <h1> Create a new tea blend!</h1>
 
 <%= form_for(@tea) do |f|%>
+<% if @tea.errors.any? %>
+     <div id="error_explanation">
+       <h2>
+         <%= pluralize(@tea.errors.count, "error") %>
+         prohibited this tea from being saved:
+     </h2>
+ 
+      <ul>
+       <% @tea.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+      </ul>
+     </div>
+ <% end %>
+
+
+
   <div>
      <%= f.label :flavor, "Flavor: " %>
      <%= f.text_field :flavor %>

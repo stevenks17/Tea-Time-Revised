@@ -7,12 +7,14 @@
     <% if params[:tea_id] %>
      <%= f.hidden_field :tea_id,value: params[:tea_id] %>
     <% else %>
-     <div class= "input-field">
-        <%= f.label :tea_id, "Select a Tea Blend" %>
-        <%= f.collection_select :tea_id, Tea.alpha, :id, :flavor_and_brand, include_blank: true %>
-      </div>
+     <div class= "input-field col s12">
+          <select>
+              <option value=":tea_id"><%= f.collection_select :tea_id, Tea.alpha, :id, :flavor_and_brand, include_blank: true %></option>
+          </select>
+          <label> <%= f.label :tea_id, "Select a Tea Blend" %> </label>
+     </div>
     <% end %>
-    <div>
+    <div class>
         <%= f.label :rating %>
         <%= f.number_field :rating, min:0, max:10 %>
     </div>
@@ -22,10 +24,9 @@
         <%= f.text_field :title %>
     </div> 
     <br>
-     <div class= "text-field">
-        <%= f.label :content  %>
-        <br>
-        <%= f.text_area :content, size: "60x25" %>
+     <div class= "input-field">
+        <textarea id=":content" class="materialize-textarea"></textarea>
+        <label for="textarea1"> <%= f.label :content  %> : </label>
     </div> 
     <br>
 
@@ -33,3 +34,9 @@
 
     <%= f.submit %>
 <% end %>                  
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+  </script>

@@ -10,19 +10,35 @@
    <%= f.text_field :description %>
  </div>
 
- <p> Select a Brand that already exists: </p>
  <div class="input-field col s12">
-   <%= f.collection_select :brand_id, Brand.all, :id, :name %>
-
+  <select></select>
+    <%= f.collection_select :brand_id, Brand.all, :id, :name %> 
+  </select>
+  <label>Select a Brand that already exists:  </label>
  </div>
 
-<p> Or create a new Brand: <p>
 <div class= "input-field">
 <%=f.fields_for :brand do |b| %> 
-  <%=b.label :name, "Name: " %>
+  <%=b.label :name, "Brand: " %>
   <%= b.text_field :name%>
 <% end %>
 </div>
 <br>
  <%= f.submit%>
 <% end %>  
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+</script>
+
+<script>
+$(document).ready(function)() {
+  $('select').material_select();
+});
+</script>

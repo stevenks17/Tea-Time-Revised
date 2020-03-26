@@ -36,9 +36,9 @@ class ReviewsController < ApplicationController
       end
   
       def update
-          
+        
           @review.update(review_params)
-          redirect_to tea_reviews_path(@tea_id)
+          redirect_to reviews_path(@review)
       end
 
       def destroy

@@ -1,10 +1,28 @@
 
-<h1>Write a Review for  </h1>
+
+<h1> Write a Review  </h1>
 
 
 
 <%= form_for Review.new do |f|%>
+ <% if @review.errors.any? %>
+     <div id="error_explanation">
+       <h2>
+         <%= pluralize(@review.errors.count, "error") %>
+         prohibited this review from being saved:
+     </h2>
+ 
+      <ul>
+       <% @review.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+      </ul>
+     </div>
+ <% end %>
+
+
     <% if params[:tea_id] %>
+     <label> Flavor: <%= @review.tea.flavor %> </label>
      <%= f.hidden_field :tea_id,value: params[:tea_id] %>
     <% else %>
       <div>

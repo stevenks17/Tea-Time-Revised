@@ -42,6 +42,7 @@ class ReviewsController < ApplicationController
       end
 
       def destroy
+        
         @review.destroy
         flash[:delete_review] = "Review Deleted!"
         redirect_to reviews_path(@review)

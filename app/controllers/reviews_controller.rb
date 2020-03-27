@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
     
       def create
         @review = current_user.reviews.build(review_params)
-        if @review.save!
+        if @review.save
           redirect_to review_path(@review)
         else
           render :new
@@ -38,7 +38,7 @@ class ReviewsController < ApplicationController
       def update
         
           @review.update(review_params)
-          redirect_to reviews_path(@review)
+          redirect_to  review_path(@review)
       end
 
       def destroy

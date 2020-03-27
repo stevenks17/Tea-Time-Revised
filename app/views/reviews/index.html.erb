@@ -1,5 +1,5 @@
 <% if @tea %>
-    <h1> Reviews for <%= @tea.brand_name%> - <%= @tea.flavor%> Tea</h1>
+    <h2> Reviews for <%= @tea.brand_name%> - <%= @tea.flavor%> Tea</h2>
       <%= link_to "Add a Review", new_tea_review_path%> 
 <% else %>
     <h1> All Reviews </h1>
@@ -12,7 +12,7 @@
 
 
   <li>
-   Brand: <%= review.tea.flavor%> <br> Title: <%= link_to review.title, review_path(review)%> <br> Rating: <%= review.rating%> <br> Author: <%= review.user.email %>
+   Flavor: <%= review.tea.flavor.capitalize%> <br> Title: <%= link_to review.title, review_path(review)%> <br> Rating: <%= review.rating%> <br> Author: <%= review.user.email %>
   </li>  <br>
 
 

@@ -1,28 +1,47 @@
-<h1> Create a new tea blend!</h1>
+<h1> Create a New Tea Blend!</h1>
 
 <%= form_for(@tea) do |f|%>
+
+<% if @tea.errors.any? %>
+     <div id="error_explanation">
+       <h2>
+         <%= pluralize(@tea.errors.count, "error") %>
+         prohibited this tea from being saved:
+     </h2>
+ 
+      <ul>
+       <% @tea.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+      </ul>
+     </div>
+ <% end %>
+
+
   <div class= "input-field">
      <%= f.label :flavor, "Flavor: " %>
      <%= f.text_field :flavor %>
  </div>
+
+
  <div class= "input-field">
    <%= f.label :description, "Description: " %>
    <%= f.text_field :description %>
  </div>
 
- <div class="input-field col s12">
-  <select></select>
+ <div class="input-field">
     <%= f.collection_select :brand_id, Brand.all, :id, :name %> 
-  </select>
-  <label>Select a Brand that already exists:  </label>
+    <label> Select a Brand if it already exists: </label>
  </div>
 
 <div class= "input-field">
 <%=f.fields_for :brand do |b| %> 
-  <%=b.label :name, "Brand: " %>
+  <%=b.label :name, "Add a New Brand: " %>
   <%= b.text_field :name%>
 <% end %>
 </div>
+
+
 <br>
  <%= f.submit%>
 <% end %>  
@@ -31,14 +50,7 @@
 
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, options);
+  $(document).ready(function(){
+    $('select').formSelect();
   });
-</script>
-
-<script>
-$(document).ready(function)() {
-  $('select').material_select();
-});
-</script>
+  </script>

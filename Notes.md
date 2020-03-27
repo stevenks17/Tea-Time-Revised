@@ -10,7 +10,7 @@ has_many teas through reviews
 Brand
 ----
 Name
-In_stores :boolean
+In_stores :boolean < stretch goal
 Has_many teas
 
 
@@ -41,5 +41,5 @@ Rating (0/10)
 
 To Do List:
 
-Error Handling
-Create a link_to new review inside nested route
+Error Handling ***
+Create a link_to new review inside nested route ***
